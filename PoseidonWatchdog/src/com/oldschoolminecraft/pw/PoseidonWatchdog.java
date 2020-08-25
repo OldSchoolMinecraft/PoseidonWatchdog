@@ -4,9 +4,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class PoseidonWatchdog extends JavaPlugin
 {
+    private WatchDogThread watchdog;
+    
     public void onEnable()
     {
-        getServer().getScheduler().scheduleSyncRepeatingTask(this, new WatchDogThread(Thread.currentThread()), 20, 20);
+        watchdog = new WatchDogThread(Thread.currentThread());
+        
+        getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable()
+        {
+            public void run() { watchdog.tickUpdate(); }
+        }, 20, 20);
         
         System.out.println("PoseidonWatchdog enabled.");
     }
