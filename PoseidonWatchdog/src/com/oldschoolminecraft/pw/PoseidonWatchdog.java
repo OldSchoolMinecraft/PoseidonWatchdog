@@ -9,6 +9,7 @@ public class PoseidonWatchdog extends JavaPlugin
     public void onEnable()
     {
         watchdog = new WatchDogThread(Thread.currentThread());
+        watchdog.start();
         
         getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable()
         {
