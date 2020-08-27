@@ -42,7 +42,8 @@ public class WatchDogThread extends Thread
                     }
                 }
                 Thread.sleep(3000L);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException e)
+            {
                 e.printStackTrace();
             }
         }
